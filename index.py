@@ -20,7 +20,7 @@ def sender_email(objeto):
         # senha_sender = 
         # email_destino = "michel.oliveira.c0@gmail.com"
 
-        email_sender = "contato@assertivacertificado"
+        email_sender = "contato@assertivacertificado.com.br"
         senha_sender = "xvfdsgbiqwwoadpj"
         email_destino = destine_mail
 
