@@ -14,7 +14,7 @@ def sender_email(objeto):
     destine_mail = jsObj["destine_mail"] 
 
     Titulo = jsObj["title"] 
-    Message = jsObj["msg"] 
+    Message = "<h1>Olá</h1>"
 
     # Credenciais do remetente
     # email_sender = "contato@assertivacertificado"
