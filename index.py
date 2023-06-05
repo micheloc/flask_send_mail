@@ -17,8 +17,8 @@ def sender_email(objeto):
     Message = jsObj["msg"] 
 
     # Credenciais do remetente
-    # email_sender = "i9camposoftware@gmail.com"
-    # senha_sender = "jtljxhreslzxyrhd"
+    # email_sender = "contato@assertivacertificado"
+    # senha_sender = "@Ab010203"
     # email_destino = "michel.oliveira.c0@gmail.com"
 
     email_sender = email
