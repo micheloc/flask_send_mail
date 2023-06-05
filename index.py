@@ -2,6 +2,7 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from urllib.parse import parse_qs
 
 from flask import Flask, jsonify, request
 
@@ -61,6 +62,7 @@ def sender_email(objeto):
 @app.route("/send_email", methods=['POST'])
 def send_mail():
     objeto = request.get_data().decode('utf-8')
+    decoded_data = parse_qs(objeto)
     # try:
     #     result = sender_email(objeto)
     #     if result == "E-mail enviado":
@@ -68,7 +70,7 @@ def send_mail():
     #     else:
     #         response = {"success": False, "message": result, "resultado": result}
     # except Exception as e:
-    response = {"success": False, "message": objeto}
+    response = {"success": False, "message": decoded_data}
     return json.dumps(response)
 
 
