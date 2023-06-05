@@ -11,24 +11,21 @@ app = Flask(__name__)
 def sender_email(objeto): 
     try:
         jsObj = json.loads(objeto)
-        email = jsObj["mail_sender"][0]
-        senha = jsObj["password"][0] 
+        # email = jsObj["mail_sender"][0]
+        # senha = jsObj["password"][0] 
         destine_mail = jsObj["destine_mail"][0]
 
         Titulo = jsObj["title"][0] 
         Message = jsObj["msg"][0] 
 
         # Credenciais do remetente
-        # email_sender = "contato@assertivacertificado"
-        # senha_sender = "@Ab010203"
+        # email_sender = 
+        # senha_sender = 
         # email_destino = "michel.oliveira.c0@gmail.com"
 
-        email_sender = email
-        senha_sender = senha
+        email_sender = "contato@assertivacertificado"
+        senha_sender = "jtljxhreslzxyrhd1@"
         email_destino = destine_mail
-
-        # cloudflare senha : jtljxhreslzxyrhd1@
-        # Configuração da mensagem
 
         mensagem = MIMEMultipart()
         mensagem["From"] = email_sender
