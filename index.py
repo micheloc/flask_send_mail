@@ -11,50 +11,46 @@ app = Flask(__name__)
 def sender_email(objeto): 
     try:
         jsObj = json.loads(objeto)
-        # email = jsObj["mail_sender"] 
+        email = jsObj["mail_sender"] 
+        senha = jsObj["password"] 
+        destine_mail = jsObj["destine_mail"] 
 
+        Titulo = jsObj["title"] 
+        Message = jsObj["msg"] 
 
-        return jsObj 
+        # Credenciais do remetente
+        # email_sender = "contato@assertivacertificado"
+        # senha_sender = "@Ab010203"
+        # email_destino = "michel.oliveira.c0@gmail.com"
 
-        # senha = jsObj["password"] 
-        # destine_mail = jsObj["destine_mail"] 
+        email_sender = email
+        senha_sender = senha
+        email_destino = destine_mail
 
-        # Titulo = jsObj["title"] 
-        # Message = jsObj["msg"] 
+        # cloudflare senha : jtljxhreslzxyrhd1@
+        # Configuração da mensagem
 
-        # # Credenciais do remetente
-        # # email_sender = "contato@assertivacertificado"
-        # # senha_sender = "@Ab010203"
-        # # email_destino = "michel.oliveira.c0@gmail.com"
+        mensagem = MIMEMultipart()
+        mensagem["From"] = email_sender
+        mensagem["To"] = email_destino
+        mensagem["Subject"] = Titulo
+        mensagem.attach(MIMEText(Message, "html"))
 
-        # email_sender = email
-        # senha_sender = senha
-        # email_destino = destine_mail
+        mensagem["Importance"] = "High"
 
-        # # cloudflare senha : jtljxhreslzxyrhd1@
-        # # Configuração da mensagem
+        # Conexão com o servidor SMTP
+        smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
+        smtp_server.starttls()
 
-        # mensagem = MIMEMultipart()
-        # mensagem["From"] = email_sender
-        # mensagem["To"] = email_destino
-        # mensagem["Subject"] = Titulo
-        # mensagem.attach(MIMEText(Message, "html"))
+        # Autenticação no servidor SMTP
+        smtp_server.login(email_sender, senha_sender)
 
-        # mensagem["Importance"] = "High"
+        # Envio da mensagem
+        smtp_server.sendmail(email_sender, email_destino, mensagem.as_string())
 
-        # # Conexão com o servidor SMTP
-        # smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
-        # smtp_server.starttls()
-
-        # # Autenticação no servidor SMTP
-        # smtp_server.login(email_sender, senha_sender)
-
-        # # Envio da mensagem
-        # smtp_server.sendmail(email_sender, email_destino, mensagem.as_string())
-
-        # # Encerramento da conexão SMTP
-        # smtp_server.quit()
-        # return "E-mail enviado"
+        # Encerramento da conexão SMTP
+        smtp_server.quit()
+        return "E-mail enviado"
     
     except Exception as e:
         return str(e)
@@ -62,21 +58,19 @@ def sender_email(objeto):
 @app.route("/send_email", methods=['POST'])
 def send_mail():
     objeto = request.get_data().decode('utf-8')
-    decoded_data = parse_qs(objeto)
-    json_data = json.dumps(decoded_data)
-    jsObj = json.loads(json_data)
+    objeto = parse_qs(objeto)
+    objeto = json.dumps(objeto)
 
+    try:
+        result = sender_email(objeto)
+        if result == "E-mail enviado":
+            response = {"success": True, "message": "E-mail enviado com sucesso", "resultado": result}
+        else:
+            response = {"success": False, "message": result, "resultado": result}
+    except Exception as e:
+        response = {"success": False, "message": "Erro ao converter os dados."}
 
-    # try:
-    #     result = sender_email(objeto)
-    #     if result == "E-mail enviado":
-    #         response = {"success": True, "message": "E-mail enviado com sucesso", "resultado": result}
-    #     else:
-    #         response = {"success": False, "message": result, "resultado": result}
-    # except Exception as e:
-    response = {"success": False, "message": jsObj}
     return json.dumps(response)
-
 
 @app.route("/")
 def Hello():
