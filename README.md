@@ -1,2 +1,1 @@
-# flask_send_mail
-Api para encaminhar e-mail Python.
+# api_flask
