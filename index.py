@@ -9,11 +9,11 @@ app = Flask(__name__)
 
 def sender_email(objeto): 
     try:
-        # jsObj = json.loads(objeto)
+        jsObj = json.loads(objeto)
         # email = jsObj["mail_sender"] 
 
 
-        return objeto 
+        return jsObj 
 
         # senha = jsObj["password"] 
         # destine_mail = jsObj["destine_mail"] 
