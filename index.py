@@ -24,7 +24,7 @@ def sender_email(objeto):
         # email_destino = "michel.oliveira.c0@gmail.com"
 
         email_sender = "contato@assertivacertificado"
-        senha_sender = "jtljxhreslzxyrhd1@"
+        senha_sender = "xvfdsgbiqwwoadpj"
         email_destino = destine_mail
 
         mensagem = MIMEMultipart()
