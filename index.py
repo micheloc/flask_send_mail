@@ -62,7 +62,10 @@ def sender_email(objeto):
 @app.route("/send_email", methods=['POST'])
 def send_mail():
     objeto = request.get_data().decode('utf-8')
-    jsObj = json.loads(parse_qs(objeto))
+    decoded_data = parse_qs(objeto)
+    json_data = json.dumps(decoded_data)
+    jsObj = json.loads(json_data)
+
 
     # try:
     #     result = sender_email(objeto)
