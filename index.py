@@ -9,51 +9,51 @@ app = Flask(__name__)
 
 def sender_email(objeto): 
     try:
-        jsObj = json.loads(objeto)
-        email = jsObj["mail_sender"] 
+        # jsObj = json.loads(objeto)
+        # email = jsObj["mail_sender"] 
 
 
-        return email 
+        return objeto 
 
-        senha = jsObj["password"] 
-        destine_mail = jsObj["destine_mail"] 
+        # senha = jsObj["password"] 
+        # destine_mail = jsObj["destine_mail"] 
 
-        Titulo = jsObj["title"] 
-        Message = jsObj["msg"] 
+        # Titulo = jsObj["title"] 
+        # Message = jsObj["msg"] 
 
-        # Credenciais do remetente
-        # email_sender = "contato@assertivacertificado"
-        # senha_sender = "@Ab010203"
-        # email_destino = "michel.oliveira.c0@gmail.com"
+        # # Credenciais do remetente
+        # # email_sender = "contato@assertivacertificado"
+        # # senha_sender = "@Ab010203"
+        # # email_destino = "michel.oliveira.c0@gmail.com"
 
-        email_sender = email
-        senha_sender = senha
-        email_destino = destine_mail
+        # email_sender = email
+        # senha_sender = senha
+        # email_destino = destine_mail
 
-        # cloudflare senha : jtljxhreslzxyrhd1@
-        # Configuração da mensagem
+        # # cloudflare senha : jtljxhreslzxyrhd1@
+        # # Configuração da mensagem
 
-        mensagem = MIMEMultipart()
-        mensagem["From"] = email_sender
-        mensagem["To"] = email_destino
-        mensagem["Subject"] = Titulo
-        mensagem.attach(MIMEText(Message, "html"))
+        # mensagem = MIMEMultipart()
+        # mensagem["From"] = email_sender
+        # mensagem["To"] = email_destino
+        # mensagem["Subject"] = Titulo
+        # mensagem.attach(MIMEText(Message, "html"))
 
-        mensagem["Importance"] = "High"
+        # mensagem["Importance"] = "High"
 
-        # Conexão com o servidor SMTP
-        smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
-        smtp_server.starttls()
+        # # Conexão com o servidor SMTP
+        # smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
+        # smtp_server.starttls()
 
-        # Autenticação no servidor SMTP
-        smtp_server.login(email_sender, senha_sender)
+        # # Autenticação no servidor SMTP
+        # smtp_server.login(email_sender, senha_sender)
 
-        # Envio da mensagem
-        smtp_server.sendmail(email_sender, email_destino, mensagem.as_string())
+        # # Envio da mensagem
+        # smtp_server.sendmail(email_sender, email_destino, mensagem.as_string())
 
-        # Encerramento da conexão SMTP
-        smtp_server.quit()
-        return "E-mail enviado"
+        # # Encerramento da conexão SMTP
+        # smtp_server.quit()
+        # return "E-mail enviado"
     
     except Exception as e:
         return str(e)
