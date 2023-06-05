@@ -11,11 +11,15 @@ def sender_email(objeto):
     try:
         jsObj = json.loads(objeto)
         email = jsObj["mail_sender"] 
+
+
+        return email 
+
         senha = jsObj["password"] 
         destine_mail = jsObj["destine_mail"] 
 
         Titulo = jsObj["title"] 
-        Message = "<h1>Olá</h1>"
+        Message = jsObj["msg"] 
 
         # Credenciais do remetente
         # email_sender = "contato@assertivacertificado"
@@ -60,9 +64,9 @@ def send_mail():
     try:
         result = sender_email(objeto)
         if result == "E-mail enviado":
-            response = {"success": True, "message": "E-mail enviado com sucesso"}
+            response = {"success": True, "message": "E-mail enviado com sucesso", "resultado": result}
         else:
-            response = {"success": False, "message": result}
+            response = {"success": False, "message": result, "resultado": result}
     except Exception as e:
         response = {"success": False, "message": str(e)}
     return json.dumps(response)
