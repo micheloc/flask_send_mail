@@ -11,21 +11,16 @@ app = Flask(__name__)
 def sender_email(objeto): 
     try:
         jsObj = json.loads(objeto)
+        sender_mail = jsObj["sender_mail"][0]
+        mail_key = jsObj["mail_key"][0]
         destine_mail = jsObj["destine_mail"][0]
         Titulo = jsObj["title"][0] 
         Message = jsObj["msg"][0] 
 
-        # Credenciais do remetente
-        # email_sender = 
-        # senha_sender = 
-        # email_destino = "michel.oliveira.c0@gmail.com"
-
-        email_sender = "contato@assertivacertificado.com.br"
-        senha_sender = "xvfdsgbiqwwoadpj"
         email_destino = destine_mail
 
         mensagem = MIMEMultipart()
-        mensagem["From"] = email_sender
+        mensagem["From"] = sender_mail
         mensagem["To"] = email_destino
         mensagem["Subject"] = Titulo
         mensagem.attach(MIMEText(Message, "html"))
@@ -37,15 +32,14 @@ def sender_email(objeto):
         smtp_server.starttls()
 
         # Autenticação no servidor SMTP
-        smtp_server.login(email_sender, senha_sender)
+        smtp_server.login(sender_mail, mail_key)
 
         # Envio da mensagem
-        smtp_server.sendmail(email_sender, email_destino, mensagem.as_string())
+        smtp_server.sendmail(sender_mail, email_destino, mensagem.as_string())
 
         # Encerramento da conexão SMTP
         smtp_server.quit()
         return "E-mail enviado"
-    
     except Exception as e:
         return str(e)
 
