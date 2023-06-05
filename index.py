@@ -61,14 +61,14 @@ def sender_email(objeto):
 @app.route("/send_email", methods=['POST'])
 def send_mail():
     objeto = request.get_data().decode('utf-8')
-    try:
-        result = sender_email(objeto)
-        if result == "E-mail enviado":
-            response = {"success": True, "message": "E-mail enviado com sucesso", "resultado": result}
-        else:
-            response = {"success": False, "message": result, "resultado": result}
-    except Exception as e:
-        response = {"success": False, "message": str(e)}
+    # try:
+    #     result = sender_email(objeto)
+    #     if result == "E-mail enviado":
+    #         response = {"success": True, "message": "E-mail enviado com sucesso", "resultado": result}
+    #     else:
+    #         response = {"success": False, "message": result, "resultado": result}
+    # except Exception as e:
+    response = {"success": False, "message": objeto}
     return json.dumps(response)
 
 
