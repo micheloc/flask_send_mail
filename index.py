@@ -60,7 +60,7 @@ def sender_email(objeto):
 
 @app.route("/send_email", methods=['POST'])
 def send_mail():
-    objeto = request.get_data()
+    objeto = request.get_data().decode('utf-8')
     try:
         result = sender_email(objeto)
         if result == "E-mail enviado":
