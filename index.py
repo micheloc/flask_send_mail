@@ -50,6 +50,7 @@ def sender_email(objeto):
     smtp_server.quit()
     return "E-mail enviado"
 
+
 @app.route("/send_email", methods=['POST'])
 def send_mail(): 
     objeto = request.get_data() 
