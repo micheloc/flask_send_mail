@@ -63,4 +63,4 @@ def send_mail():
 
 @app.route("/")
 def Hello():
-    return "<p>Teste uploading</p>"
+    return "<p>API para encaminhar email</p>"
