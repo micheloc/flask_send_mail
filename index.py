@@ -64,5 +64,5 @@ def exibir_imagem():
     return send_file('./Logo.png', mimetype='image/png')
 
 @app.route("/")
-def Hello():
+def Index():
     return render_template('index.html')
