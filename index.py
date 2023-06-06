@@ -65,4 +65,4 @@ def exibir_imagem():
 
 @app.route("/")
 def Hello():
-    return render_template('./HTML/index.html')
+    return render_template('index.html')
