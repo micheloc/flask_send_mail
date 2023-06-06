@@ -65,8 +65,6 @@ def exibir_imagem():
 
 @app.route("/")
 def index():
-    sender_mail = "{ Sender-mail }"  # Você pode substituir isso pelo valor que deseja exibir na página
-
     return """
     <html>
         <head>
@@ -98,8 +96,7 @@ def index():
         <body>
             <div class="container">
                 <h1>Bem-vindo à minha página</h1>
-                <p>{}</p>
             </div>
         </body>
     </html>
-    """.format(sender_mail)
+    """
