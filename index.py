@@ -64,5 +64,42 @@ def exibir_imagem():
     return send_file('./Logo.png', mimetype='image/png')
 
 @app.route("/")
-def Index():
-    return "<p>{ Sender-mail }</p>"
+def index():
+    sender_mail = "{ Sender-mail }"  # Você pode substituir isso pelo valor que deseja exibir na página
+
+    return """
+    <html>
+        <head>
+            <title>Minha Página Inicial</title>
+            <style>
+                body {
+                    background-color: #f5f5f5;
+                    color: #333;
+                    font-family: Arial, sans-serif;
+                }
+
+                .container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                }
+
+                h1 {
+                    color: #ff9900;
+                }
+
+                p {
+                    font-size: 18px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Bem-vindo à minha página</h1>
+                <p>{}</p>
+            </div>
+        </body>
+    </html>
+    """.format(sender_mail)
