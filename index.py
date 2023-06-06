@@ -74,6 +74,7 @@ def index():
                     background-color: #f5f5f5;
                     color: #333;
                     font-family: Arial, sans-serif;
+                    overflow: none; 
                 }
 
                 .container {
@@ -95,7 +96,7 @@ def index():
         </head>
         <body>
             <div class="container">
-                <h1>Bem-vindo à minha página</h1>
+                <h1>Welcome</h1>
             </div>
         </body>
     </html>
