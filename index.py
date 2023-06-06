@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from urllib.parse import parse_qs
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 
 app = Flask(__name__)
 
@@ -59,6 +59,10 @@ def send_mail():
         response = {"success": False, "message": "Erro ao converter os dados."}
 
     return json.dumps(response)
+
+@app.route("/logo_assertiva")
+def exibir_imagem(): 
+    return send_file('./Logo.png', mimetype='image/png')
 
 @app.route("/")
 def Hello():
