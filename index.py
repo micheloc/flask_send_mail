@@ -3,8 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from urllib.parse import parse_qs
-
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, request, send_file, render_template
 
 app = Flask(__name__)
 
@@ -66,4 +65,4 @@ def exibir_imagem():
 
 @app.route("/")
 def Hello():
-    return "<p>API para encaminhar email1</p>"
+    return render_template('./HTML/index.html')
