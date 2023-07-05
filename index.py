@@ -27,7 +27,7 @@ def sender_email(objeto):
         mensagem["Importance"] = "High"
 
         # Conexão com o servidor SMTP
-        smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
+        smtp_server = smtplib.SMTP("smtp.zoho.com", 587)
         smtp_server.starttls()
 
         # Autenticação no servidor SMTP
